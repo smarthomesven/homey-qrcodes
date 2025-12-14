@@ -1,0 +1,30 @@
+{
+  "id": "nl.dypodex.qrcode",
+  "version": "1.0.0",
+  "compatibility": ">=12.4.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "QR Codes",
+    "nl": "QR-codes"
+  },
+  "description": {
+    "en": "Add QR codes to your Dashboards",
+    "nl": "QR-codes toevoegen aan je Dashboards"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Sven Serlier",
+    "email": "sven@dypodex.com"
+  }
+}

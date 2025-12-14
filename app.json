@@ -1,0 +1,69 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "nl.dypodex.qrcode",
+  "version": "1.0.0",
+  "compatibility": ">=12.4.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "QR Codes",
+    "nl": "QR Codes"
+  },
+  "description": {
+    "en": "Add QR codes to your Dashboards",
+    "nl": "QR-codes toevoegen aan je Dashboards"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Sven Serlier",
+    "email": "sven@dypodex.com"
+  },
+  "widgets": {
+    "text": {
+      "name": {
+        "en": "Text",
+        "nl": "Tekst"
+      },
+      "height": 200,
+      "settings": [
+        {
+          "id": "text",
+          "type": "textarea",
+          "title": {
+            "en": "Text",
+            "nl": "Tekst"
+          }
+        }
+      ],
+      "id": "text"
+    },
+    "url": {
+      "name": {
+        "en": "URL",
+        "nl": "URL"
+      },
+      "height": 200,
+      "settings": [
+        {
+          "id": "text",
+          "type": "textarea",
+          "title": {
+            "en": "URL",
+            "nl": "URL"
+          }
+        }
+      ],
+      "id": "url"
+    }
+  }
+}

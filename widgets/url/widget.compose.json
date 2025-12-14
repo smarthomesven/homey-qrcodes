@@ -1,0 +1,17 @@
+{
+  "name": {
+    "en": "URL",
+    "nl": "URL"
+  },
+  "height": 200,
+  "settings": [
+    {
+      "id": "text",
+      "type": "textarea",
+      "title": {
+        "en": "URL",
+        "nl": "URL"
+      }
+    }
+  ]
+}

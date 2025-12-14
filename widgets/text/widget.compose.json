@@ -1,0 +1,17 @@
+{
+  "name": {
+    "en": "Text",
+    "nl": "Tekst"
+  },
+  "height": 200,
+  "settings": [
+    {
+      "id": "text",
+      "type": "textarea",
+      "title": {
+        "en": "Text",
+        "nl": "Tekst"
+      }
+    }
+  ]
+}

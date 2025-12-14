@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background: white;
+        }
+        #qrcode {
+          margin: -10px;
+        }
+    </style>
+</head>
+<body class="homey-widget">
+    <div id="qrcode"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+      function onHomeyReady(Homey) {
+        try {
+          const qrcodeDiv = document.getElementById('qrcode');
+          const text = Homey.getSettings().text;
+          if (!text) {
+            Homey.ready();
+            qrcodeDiv.innerHTML = '<p>Please configure the widget with text to generate a QR code.</p>';
+            return;
+          }
+          const size = Math.min(window.innerWidth, window.innerHeight) * 0.9;
+          qrcodeDiv.innerHTML = '';
+          new QRCode(qrcodeDiv, {
+            text: text,
+            width: Math.floor(size),
+            height: Math.floor(size),
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+          });
+          Homey.ready();
+        } catch (error) {
+          console.error('Error generating QR code:', error);
+        }
+      }
+    </script>
+</body>
+</html>
