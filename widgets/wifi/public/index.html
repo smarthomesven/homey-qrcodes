@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background: var(--homey-background-color);
+        }
+        #qrcode {
+          margin: -10px;
+        }
+    </style>
+</head>
+<body class="homey-widget">
+    <div id="qrcode"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+      function onHomeyReady(Homey) {
+        try {
+          const qrcodeDiv = document.getElementById('qrcode');
+          const ssid = Homey.getSettings().ssid;
+          const password = Homey.getSettings().password;
+          if (!ssid) {
+            Homey.ready();
+            qrcodeDiv.innerHTML = '<p>Please configure the widget first.</p>';
+            return;
+          }
+          if (password && (password.length < 8 || password.length > 63)) {
+            Homey.ready();
+            qrcodeDiv.innerHTML = '<p>Password must be between 8 and 63 characters.</p>';
+            return;
+          }
+
+          function isDarkMode() {
+            const bg = getComputedStyle(document.body)
+              .getPropertyValue('--homey-background-color')
+              .trim();
+            const tempEl = document.createElement('div');
+            tempEl.style.color = 'var(--homey-background-color)';
+            document.body.appendChild(tempEl);
+            const resolved = getComputedStyle(tempEl).color;
+            document.body.removeChild(tempEl);
+            const match = resolved.match(/\d+/g);
+            if (!match) return false;
+            const [r, g, b] = match.map(Number);
+            const luminance = (0.299 * r + 0.587 * g + 0.114 * b);
+            return luminance < 128;
+          }
+
+          function generateQRCode() {
+            const dark = isDarkMode();
+            const size = Math.min(window.innerWidth, window.innerHeight) * 0.9;
+            let qrText;
+            if (password) {
+              qrText = `WIFI:T:WPA;S:${ssid};P:${password};;`
+            } else {
+              qrText = `WIFI:T:ESS;S:${ssid};;`
+            }
+            qrcodeDiv.innerHTML = '';
+            new QRCode(qrcodeDiv, {
+              text: qrText,
+              width: Math.floor(size),
+              height: Math.floor(size),
+              colorDark: dark ? '#ffffff' : '#000000',
+              colorLight: dark ? '#2a2a2e' : '#ffffff',
+              correctLevel: QRCode.CorrectLevel.H
+            });
+          }
+
+          // Watch for any class or style changes on body or its parents
+          const observer = new MutationObserver(generateQRCode);
+          observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class', 'style'],
+            subtree: true
+          });
+
+          generateQRCode();
+          Homey.ready();
+        } catch (error) {
+          console.error('Error generating QR code:', error);
+        }
+      }
+    </script>
+</body>
+</html>

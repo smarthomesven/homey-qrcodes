@@ -70,6 +70,32 @@
         }
       ],
       "id": "url"
+    },
+    "wifi": {
+      "name": {
+        "en": "WiFi",
+        "nl": "WiFi"
+      },
+      "height": 200,
+      "settings": [
+        {
+          "id": "ssid",
+          "type": "textarea",
+          "title": {
+            "en": "SSID",
+            "nl": "SSID"
+          }
+        },
+        {
+          "id": "password",
+          "type": "textarea",
+          "title": {
+            "en": "Password",
+            "nl": "Wachtwoord"
+          }
+        }
+      ],
+      "id": "wifi"
     }
   }
 }
