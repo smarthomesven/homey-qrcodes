@@ -27,7 +27,7 @@
           const text = Homey.getSettings().text;
           if (!text) {
             Homey.ready();
-            qrcodeDiv.innerHTML = '<p>Please configure the widget first.</p>';
+            qrcodeDiv.innerHTML = `<p>${Homey.__('errors.configuration')}</p>`;
             return;
           }
 

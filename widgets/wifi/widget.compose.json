@@ -19,6 +19,10 @@
       "title": {
         "en": "Password",
         "nl": "Wachtwoord"
+      },
+      "hint": {
+        "en": "Leave blank for an open/unencrypted network.",
+        "nl": "Laat leeg voor een open/onversleuteld netwerk."
       }
     }
   ]

@@ -1,1 +1,5 @@
-{}
+{
+    "errors": {
+        "configuration": "Please configure the widget first."
+    }
+}

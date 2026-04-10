@@ -28,7 +28,7 @@
           const password = Homey.getSettings().password;
           if (!ssid) {
             Homey.ready();
-            qrcodeDiv.innerHTML = '<p>Please configure the widget first.</p>';
+            qrcodeDiv.innerHTML = `<p>${Homey.__('errors.configuration')}</p>`;
             return;
           }
           if (password && (password.length < 8 || password.length > 63)) {
