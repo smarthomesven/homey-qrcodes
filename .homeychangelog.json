@@ -13,5 +13,8 @@
   },
   "1.0.4": {
     "en": "Added WiFi QR code widget"
+  },
+  "1.0.5": {
+    "en": "Added hint to WiFi QR code password setting and added translations for error messages"
   }
 }
